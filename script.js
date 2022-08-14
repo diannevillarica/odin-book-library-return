@@ -10,31 +10,34 @@ function Book(id, title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggle = function () {
+  this.read == true ? (this.read = false) : (this.read = true);
+};
+
 const addBookToLibrary = (event) => {
   event.preventDefault();
 
-  let myLibraryItem = new Book();
+  let myLibraryItem = new Book(); // constructor
 
-  // Create each object
-  myLibraryItem.id,
-    (myLibraryItem.title = document.getElementById("title").value),
+  // Create each object from form inputs
+  (myLibraryItem.title = document.getElementById("title").value),
     (myLibraryItem.author = document.getElementById("author").value),
     (myLibraryItem.pages = document.getElementById("pages").value),
-    (myLibraryItem.read = document.getElementById("read").value),
-    myLibrary.push(myLibraryItem);
+    (myLibraryItem.read = document.getElementById("read").value === "true");
+  myLibrary.push(myLibraryItem);
   document.querySelector("form").reset();
-
-  console.log(myLibraryItem.read);
 
   // Display in a table
   const tr = document.createElement("tr");
-  const deleteButton = document.createElement("button");
-  deleteButton.setAttribute("class", "delete");
-  deleteButton.innerHTML = "Delete";
+  const deleteBtn = document.createElement("button");
+  const readBtn = document.createElement("button");
+  readBtn.setAttribute("class", "status");
+
+  deleteBtn.innerHTML = "Delete";
 
   //delete an item
-  deleteButton.addEventListener("click", function () {
-    const itemTitle = this.nextSibling.textContent;
+  deleteBtn.addEventListener("click", function () {
+    const itemTitle = this.nextSibling.textContent; // not elegant
     const itemPos = myLibrary.findIndex((item) => item.title == itemTitle);
 
     myLibrary.splice(itemPos, 1);
@@ -42,30 +45,33 @@ const addBookToLibrary = (event) => {
     this.parentNode.parentNode.removeChild(tr);
   });
 
-  // TODO: replace checkbox for true or false
-  // const checkbox = document.createElement("input");
-
   Object.values(myLibraryItem)
     .slice(1)
     .forEach((value) => {
       let td = document.createElement("td");
       td.innerHTML = value;
-      tr.prepend(deleteButton);
+      tr.prepend(deleteBtn);
       tr.appendChild(td);
-      // tr.appendChild(checkbox);
     });
+
+  readBtn.innerHTML = tr.lastChild.innerHTML;
+  tr.lastChild.replaceWith(readBtn);
 
   document.querySelector("tbody").appendChild(tr);
 
-  // console.log(myLibrary);
   console.log(myLibraryItem);
+
+  // toggle boolean value of read within the object
+  const readStats = document.querySelectorAll(".status");
+  // if (readStats) {
+  readStats.forEach((readStat) => {
+    readStat.addEventListener("click", function () {
+      console.log("is readStats working??");
+      myLibraryItem.toggle(this);
+      this.innerHTML = myLibraryItem.read;
+    });
+  });
+  // }
 };
 
 document.getElementById("form-btn").addEventListener("click", addBookToLibrary);
-
-// delete a list
-
-// toggle boolean value of read within the object
-
-// value true is being stored?
-// find a way to delete array element within delete button

@@ -59,15 +59,11 @@
             </div>
           </div>
           <div class="form-row">
-            <p>Have you read it?</p>
-            <div class="form-col">
-              <input type="radio" name="read" id="read" value="true" />
-              <label for="read">Yes</label>
-            </div>
-            <div class="form-col">
-              <input type="radio" name="read" id="read" value="false" />
-              <label for="read">Nope</label>
-            </div>
+            <label for="read">Have you read it?</label>
+            <select name="read" id="read">
+              <option value="true">yes</option>
+              <option value="false">no</option>
+            </select>
           </div>
           <div class="form-row">
             <input id="form-btn" type="submit" value="Submit" />
