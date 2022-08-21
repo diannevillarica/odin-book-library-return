@@ -2,8 +2,7 @@
 
 let myLibrary = [];
 
-function Book(id, title, author, pages, read) {
-  this.id = Date.now();
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -11,7 +10,8 @@ function Book(id, title, author, pages, read) {
 }
 
 Book.prototype.toggle = function () {
-  this.read == true ? (this.read = false) : (this.read = true);
+  return this.read == true ? (this.read = false) : (this.read = true);
+  // return this.read;
 };
 
 const addBookToLibrary = (event) => {
@@ -37,12 +37,18 @@ const addBookToLibrary = (event) => {
 
   //delete an item
   deleteBtn.addEventListener("click", function () {
-    const itemTitle = this.nextSibling.textContent; // not elegant
+    const itemTitle = this.nextSibling.textContent; // not elegant :P
     const itemPos = myLibrary.findIndex((item) => item.title == itemTitle);
 
     myLibrary.splice(itemPos, 1);
 
     this.parentNode.parentNode.removeChild(tr);
+  });
+
+  // toggle boolean value of read within the object
+  readBtn.addEventListener("click", function () {
+    myLibraryItem.toggle();
+    this.innerHTML = myLibraryItem.read;
   });
 
   Object.values(myLibraryItem)
@@ -58,20 +64,6 @@ const addBookToLibrary = (event) => {
   tr.lastChild.replaceWith(readBtn);
 
   document.querySelector("tbody").appendChild(tr);
-
-  console.log(myLibraryItem);
-
-  // toggle boolean value of read within the object
-  const readStats = document.querySelectorAll(".status");
-  // if (readStats) {
-  readStats.forEach((readStat) => {
-    readStat.addEventListener("click", function () {
-      console.log("is readStats working??");
-      myLibraryItem.toggle(this);
-      this.innerHTML = myLibraryItem.read;
-    });
-  });
-  // }
 };
 
 document.getElementById("form-btn").addEventListener("click", addBookToLibrary);
