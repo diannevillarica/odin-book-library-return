@@ -11,13 +11,12 @@ function Book(title, author, pages, read) {
 
 Book.prototype.toggle = function () {
   return this.read == true ? (this.read = false) : (this.read = true);
-  // return this.read;
 };
 
 const addBookToLibrary = (event) => {
   event.preventDefault();
 
-  let myLibraryItem = new Book(); // constructor
+  let myLibraryItem = new Book();
 
   // Create each object from form inputs
   (myLibraryItem.title = document.getElementById("title").value),
@@ -31,9 +30,10 @@ const addBookToLibrary = (event) => {
   const tr = document.createElement("tr");
   const deleteBtn = document.createElement("button");
   const readBtn = document.createElement("button");
-  readBtn.setAttribute("class", "status");
+  readBtn.setAttribute("id", "read-button");
+  deleteBtn.setAttribute("id", "delete-button");
 
-  deleteBtn.innerHTML = "Delete";
+  // deleteBtn.innerHTML = "Delete";
 
   //delete an item
   deleteBtn.addEventListener("click", function () {
@@ -66,4 +66,10 @@ const addBookToLibrary = (event) => {
   document.querySelector("tbody").appendChild(tr);
 };
 
-document.getElementById("form-btn").addEventListener("click", addBookToLibrary);
+document
+  .getElementById("form-button")
+  .addEventListener("click", addBookToLibrary);
+
+document.getElementById("new-button").addEventListener("click", function () {
+  document.querySelector(".form-container").style.display = "block";
+});
