@@ -2,7 +2,8 @@
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(id, title, author, pages, read) {
+  this.id = Date.now();
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -33,7 +34,7 @@ const addBookToLibrary = (event) => {
   readBtn.setAttribute("id", "read-button");
   deleteBtn.setAttribute("id", "delete-button");
 
-  // deleteBtn.innerHTML = "Delete";
+  deleteBtn.innerHTML = "Delete";
 
   //delete an item
   deleteBtn.addEventListener("click", function () {
@@ -71,5 +72,12 @@ document
   .addEventListener("click", addBookToLibrary);
 
 document.getElementById("new-button").addEventListener("click", function () {
-  document.querySelector(".form-container").style.display = "block";
+  document.querySelector(".form-container").style.display = "flex";
+});
+
+document.addEventListener("mouseup", function (event) {
+  const form = document.querySelector("form");
+  if (!form.contains(event.target)) {
+    document.querySelector(".form-container").style.display = "none";
+  }
 });
