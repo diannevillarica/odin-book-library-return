@@ -11,7 +11,7 @@ function Book(id, title, author, pages, read) {
 }
 
 Book.prototype.toggle = function () {
-  return this.read == true ? (this.read = false) : (this.read = true);
+  return this.read == "Yes" ? (this.read = "Nope") : (this.read = "Yes");
 };
 
 const addBookToLibrary = (event) => {
@@ -23,18 +23,19 @@ const addBookToLibrary = (event) => {
   (myLibraryItem.title = document.getElementById("title").value),
     (myLibraryItem.author = document.getElementById("author").value),
     (myLibraryItem.pages = document.getElementById("pages").value),
-    (myLibraryItem.read = document.getElementById("read").value === "true");
+    (myLibraryItem.read = document.getElementById("read").value);
   myLibrary.push(myLibraryItem);
   document.querySelector("form").reset();
 
   // Display in a table
   const tr = document.createElement("tr");
   const deleteBtn = document.createElement("button");
+  const icon = document.createElement("i");
   const readBtn = document.createElement("button");
   readBtn.setAttribute("id", "read-button");
   deleteBtn.setAttribute("id", "delete-button");
-
-  deleteBtn.innerHTML = "Delete";
+  deleteBtn.appendChild(icon);
+  icon.setAttribute("class", "ph-trash-bold");
 
   //delete an item
   deleteBtn.addEventListener("click", function () {

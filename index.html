@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
+    <!-- <script
+      src="https://kit.fontawesome.com/e82669c551.js"
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
     <title>📚 My Book Log</title>
   </head>
   <body>
@@ -13,24 +18,26 @@
       <div class="main-container">
         <div class="row">
           <div class="instructions">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus
-            incidunt ut exercitationem illum et corrupti vel voluptatem debitis
-            suscipit sequi?
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Exercitationem, omnis! Voluptates sit pariatur ipsam delectus
+              itaque, consequatur autem laudantium repudiandae.
+            </p>
           </div>
           <div class="new">
             <button id="new-button">New book</button>
           </div>
         </div>
         <div class="row">&nbsp;</div>
-        <div class="row">
+        <div class="row" style="overflow-x: auto">
           <table>
             <thead>
               <tr>
-                <th>Delete</th>
+                <th>&nbsp;</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Pages</th>
-                <th>Read</th>
+                <th>Have you read it?</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -61,13 +68,16 @@
           <div class="form-row">
             <label for="read">Have you read it?</label>
             <select name="read" id="read">
-              <option value="true">true</option>
-              <option value="false">false</option>
+              <option value="Yes">Yes</option>
+              <option value="Nope">Nope</option>
             </select>
           </div>
-          <div class="form-row">
+          <!-- <div class="form-row">
             <input id="form-button" type="submit" value="Submit" />
-          </div>
+          </div> -->
+          <!-- <div class="form-row"> -->
+          <button id="form-button" type="submit" value="Submit">Submit</button>
+          <!-- </div> -->
         </form>
       </div>
     </main>
