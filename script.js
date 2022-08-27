@@ -40,10 +40,7 @@ const addBookToLibrary = (event) => {
   icon.setAttribute("class", "ph-trash-bold");
 
   deleteBtn.addEventListener("click", function () {
-    const itemTitle = this.nextSibling.textContent; // not elegant :P
-    const itemPos = myLibrary.findIndex((item) => item.title == itemTitle);
-    myLibrary.splice(itemPos, 1);
-    this.parentNode.parentNode.removeChild(tr);
+    this.parentNode.parentNode.parentNode.removeChild(tr);
   });
 
   readBtn.addEventListener("click", function () {
