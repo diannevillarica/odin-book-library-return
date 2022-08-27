@@ -16,7 +16,6 @@ Book.prototype.toggle = function () {
 
 const addBookToLibrary = (event) => {
   event.preventDefault();
-  checkValidity();
 
   let myLibraryItem = new Book();
 
@@ -26,6 +25,7 @@ const addBookToLibrary = (event) => {
     (myLibraryItem.pages = document.getElementById("pages").value),
     (myLibraryItem.read = document.getElementById("read").value);
   myLibrary.push(myLibraryItem);
+
   document.querySelector("form").reset();
 
   // Display in a table
@@ -39,20 +39,13 @@ const addBookToLibrary = (event) => {
   deleteBtn.appendChild(icon);
   icon.setAttribute("class", "ph-trash-bold");
 
-  // const trRead = tr.firstChild.nextSibling;
-  // console.log(tr.childNodes[4].nodeName);
-
-  //delete an item
   deleteBtn.addEventListener("click", function () {
     const itemTitle = this.nextSibling.textContent; // not elegant :P
     const itemPos = myLibrary.findIndex((item) => item.title == itemTitle);
-
     myLibrary.splice(itemPos, 1);
-
     this.parentNode.parentNode.removeChild(tr);
   });
 
-  // toggle boolean value of read within the object
   readBtn.addEventListener("click", function () {
     myLibraryItem.toggle();
     this.innerHTML = myLibraryItem.read;
@@ -68,15 +61,11 @@ const addBookToLibrary = (event) => {
   readBtn.innerText = tr.lastChild.innerText;
   tr.lastChild.innerText = "";
   tr.lastChild.appendChild(readBtn);
-
   tr.appendChild(td).appendChild(deleteBtn);
-
   document.querySelector("tbody").appendChild(tr);
 };
 
-document
-  .getElementById("form-button")
-  .addEventListener("submit", addBookToLibrary);
+document.querySelector("form").addEventListener("submit", addBookToLibrary);
 
 document.getElementById("new-button").addEventListener("click", function () {
   document.querySelector(".form-container").style.display = "flex";
