@@ -85,6 +85,11 @@ select {
 /* MEDIA QUERIES */
 
 /* MAIN */
+body {
+  background-color: #a5b4fc;
+  color: #f1f1f1;
+}
+
 .main-container {
   margin: 0 auto;
   padding: 3rem 3vw;
@@ -115,15 +120,28 @@ table {
 
 td,
 th {
-  border: 1px solid #dddddd;
+  /* border: 1px solid #ccc; */
+  background-color: #f1f1f1;
+  color: #818cf8;
   text-align: center;
   padding: 0.8rem;
   letter-spacing: 0.1rem;
 }
 
-/* tr:nth-child(even) {
-  background-color: #dddddd;
-} */
+th:first-of-type {
+  border-radius: 0.6rem 0 0 0;
+}
+th:last-of-type {
+  border-radius: 0 0.6rem 0 0;
+}
+
+tr:last-of-type td:first-child {
+  border-radius: 0 0 0 0.6rem;
+}
+
+tr:last-of-type td:last-child {
+  border-radius: 0 0 0.6rem 0;
+}
 
 table button {
   margin: 1rem;
@@ -144,15 +162,17 @@ table button {
 }
 
 form {
-  background: white;
+  background: #f1f1f1;
   padding: 3rem 2vw;
   border-radius: 1rem;
+  color: #374151;
 }
 
 .form-heading {
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
   text-align: center;
   font-size: 2rem;
+  /* color: #818cf8; */
 }
 
 .form-row {
@@ -165,7 +185,7 @@ form {
 }
 
 .form-row:not(:last-child) {
-  padding-bottom: 2rem;
+  padding-bottom: 1.8rem;
 }
 
 .form-col {
@@ -179,11 +199,36 @@ form {
 
 input,
 select {
-  min-width: 300px;
-  height: 40px;
+  min-width: 250px;
+  height: 36px;
   border: none;
-  background-color: #f4f4f4;
-  border-radius: 1rem;
+  background-color: #eef2ff;
+  border: 1px solid #a5b4fc;
+  border-radius: 0.8rem;
+  padding: 0 0.8vw;
+}
+
+label {
+  font-size: 1.4rem;
+}
+
+.error-message {
+  color: salmon;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: none;
+}
+
+input:not(:focus):not(:placeholder-shown):invalid {
+  border-color: salmon;
+}
+
+input:not(:focus):not(:placeholder-shown):invalid ~ .error-message {
+  display: block;
+}
+
+input:not(:focus):not(:placeholder-shown):valid {
+  border-color: #a5b4fc;
 }
 
 /* BUTTONS */
@@ -198,11 +243,15 @@ select {
   width: 100%;
   margin: auto;
   margin-top: 2rem;
+  background-color: #818cf8;
+  color: #f1f1f1;
 }
 
 #read-button {
   width: 100%;
   max-width: 15.6rem;
+  background-color: #818cf8;
+  color: #f1f1f1;
 }
 
 #delete-button {
@@ -211,22 +260,10 @@ select {
 }
 
 #delete-button i {
-  color: rgb(162, 162, 228);
+  color: #818cf8;
   vertical-align: middle;
 }
 
 .ph-trash-bold::before {
   font-size: 1.8rem !important;
 }
-
-/* .delete-icon::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-
-  font-family: "Font Awesome 6 Free";
-  font-weight: 400;
-  content: "/f1f8";
-} */

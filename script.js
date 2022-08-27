@@ -16,6 +16,7 @@ Book.prototype.toggle = function () {
 
 const addBookToLibrary = (event) => {
   event.preventDefault();
+  checkValidity();
 
   let myLibraryItem = new Book();
 
@@ -29,6 +30,7 @@ const addBookToLibrary = (event) => {
 
   // Display in a table
   const tr = document.createElement("tr");
+  const td = document.createElement("td");
   const deleteBtn = document.createElement("button");
   const icon = document.createElement("i");
   const readBtn = document.createElement("button");
@@ -36,6 +38,9 @@ const addBookToLibrary = (event) => {
   deleteBtn.setAttribute("id", "delete-button");
   deleteBtn.appendChild(icon);
   icon.setAttribute("class", "ph-trash-bold");
+
+  // const trRead = tr.firstChild.nextSibling;
+  // console.log(tr.childNodes[4].nodeName);
 
   //delete an item
   deleteBtn.addEventListener("click", function () {
@@ -58,19 +63,20 @@ const addBookToLibrary = (event) => {
     .forEach((value) => {
       let td = document.createElement("td");
       td.innerHTML = value;
-      tr.prepend(deleteBtn);
       tr.appendChild(td);
     });
+  readBtn.innerText = tr.lastChild.innerText;
+  tr.lastChild.innerText = "";
+  tr.lastChild.appendChild(readBtn);
 
-  readBtn.innerHTML = tr.lastChild.innerHTML;
-  tr.lastChild.replaceWith(readBtn);
+  tr.appendChild(td).appendChild(deleteBtn);
 
   document.querySelector("tbody").appendChild(tr);
 };
 
 document
   .getElementById("form-button")
-  .addEventListener("click", addBookToLibrary);
+  .addEventListener("submit", addBookToLibrary);
 
 document.getElementById("new-button").addEventListener("click", function () {
   document.querySelector(".form-container").style.display = "flex";

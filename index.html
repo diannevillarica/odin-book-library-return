@@ -20,8 +20,9 @@
           <div class="instructions">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Exercitationem, omnis! Voluptates sit pariatur ipsam delectus
-              itaque, consequatur autem laudantium repudiandae.
+              Quibusdam, eos suscipit voluptatibus provident impedit veritatis
+              totam vel a laboriosam repudiandae nulla! Aliquam saepe maiores
+              quas expedita consequatur sapiente necessitatibus officiis?
             </p>
           </div>
           <div class="new">
@@ -29,15 +30,15 @@
           </div>
         </div>
         <div class="row">&nbsp;</div>
-        <div class="row" style="overflow-x: auto">
+        <div class="row">
           <table>
             <thead>
               <tr>
-                <th>&nbsp;</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Pages</th>
                 <th>Have you read it?</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -50,34 +51,54 @@
           <div class="form-row">
             <div class="form-col">
               <label for="title">Title</label>
-              <input type="text" name="title" id="title" />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder=" "
+                required
+              />
+              <p class="error-message">This field is required.</p>
             </div>
           </div>
           <div class="form-row">
             <div class="form-col">
               <label for="author">Author</label>
-              <input type="text" name="author" id="author" />
+              <input
+                type="text"
+                name="author"
+                id="author"
+                placeholder=" "
+                required
+              />
+              <p class="error-message">This field is required.</p>
             </div>
           </div>
           <div class="form-row">
             <div class="form-col">
               <label for="pages">Number of Pages</label>
-              <input type="number" name="pages" id="pages" />
+              <input
+                type="number"
+                min="0"
+                max="1000"
+                name="pages"
+                id="pages"
+                placeholder=" "
+                required
+              />
+              <p class="error-message">Please enter a number from 1 to 1000.</p>
             </div>
           </div>
           <div class="form-row">
             <label for="read">Have you read it?</label>
-            <select name="read" id="read">
+            <select name="read" id="read" required>
               <option value="Yes">Yes</option>
               <option value="Nope">Nope</option>
             </select>
+            <p class="error-message">This field is required.</p>
           </div>
-          <!-- <div class="form-row">
-            <input id="form-button" type="submit" value="Submit" />
-          </div> -->
-          <!-- <div class="form-row"> -->
+
           <button id="form-button" type="submit" value="Submit">Submit</button>
-          <!-- </div> -->
         </form>
       </div>
     </main>
