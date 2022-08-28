@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
-    <!-- <script
-      src="https://kit.fontawesome.com/e82669c551.js"
-      crossorigin="anonymous"
-    ></script> -->
     <script src="https://unpkg.com/phosphor-icons"></script>
     <title>📚 My Book Log</title>
   </head>
@@ -18,26 +14,27 @@
       <div class="main-container">
         <div class="row">
           <div class="instructions">
+            <h1>Book Log</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Quibusdam, eos suscipit voluptatibus provident impedit veritatis
-              totam vel a laboriosam repudiandae nulla! Aliquam saepe maiores
-              quas expedita consequatur sapiente necessitatibus officiis?
+              Welcome to your personal book log! You can log books that you've
+              read or are currently reading. This app will help you track the
+              books and how many pages you've read. To begin, click the New Book
+              button.
             </p>
+            <p></p>
           </div>
           <div class="new">
             <button id="new-button">New book</button>
           </div>
         </div>
-        <div class="row">&nbsp;</div>
-        <div class="row">
+        <div class="row table-row">
           <table>
             <thead>
               <tr>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Pages</th>
-                <th>Have you read it?</th>
+                <th>Finished reading?</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -102,6 +99,17 @@
       </div>
     </main>
   </body>
+  <footer class="footer">
+    <p></p>
+    <a href="https://github.com/diannevillarica" target="_blank">
+      Copyright ©
+      <script>
+        document.write(new Date().getFullYear());
+      </script>
+      diannevillarica&nbsp;
+      <i class="ph-github-logo-bold"></i>
+    </a>
+  </footer>
 </html>
 
 <!-- TODO: Tests for bugs
